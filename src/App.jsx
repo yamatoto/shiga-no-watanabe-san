@@ -2,45 +2,29 @@
 import { useEffect, useState } from "react";
 import { ColorfulMessage } from "./components/ColorfulMessage";
 
+const AHO_FACE = "(´◓q◔｀)";
+const COUNT_FACE = "( • ̀ω•́ )";
+const START_END_FACE = "( ◠‿◠ )";
+
 const App = () => {
   // console.log("App");
   const [num, setNum] = useState(0);
   const [face, setFace] = useState("");
 
-  const increment = () => {
-    if (num >= 41) {
-      setNum(0);
-    } else {
-      setNum(num + 1);
-    }
-  };
-  const decrement = () => {
-    if (num <= 0) {
-      setNum(0);
-    } else {
-      setNum(num - 1);
-    }
-  };
+  const increment = () => (num >= 41 ? setNum(0) : setNum(num + 1));
+  const decrement = () => (num <= 0 ? setNum(0) : setNum(num - 1));
   const resetNum = () => setNum(0);
-  const switchAhoFaceShowFlg = () => {
-    if (face === "(´◓q◔｀)") {
-      setFace("( • ̀ω•́ )");
-    } else {
-      setFace("(´◓q◔｀)");
-    }
-  };
-
-  const judgeContain3 = () => {
-    return num.toString().includes("3");
-  };
+  const switchAhoFaceShowFlg = () =>
+    face === AHO_FACE ? setFace(COUNT_FACE) : setFace(AHO_FACE);
+  const judgeContain3 = () => num.toString().includes("3");
 
   useEffect(() => {
     if (num === 0 || num >= 40) {
-      setFace("( ◠‿◠ )");
+      setFace(START_END_FACE);
     } else if (num % 3 !== 0 && !judgeContain3()) {
-      setFace("( • ̀ω•́ )");
+      setFace(COUNT_FACE);
     } else {
-      setFace("(´◓q◔｀)");
+      setFace(AHO_FACE);
     }
   }, [num]);
 
