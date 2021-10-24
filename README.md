@@ -1,2 +1,4 @@
 # shiga-no-watanabe-san
-Created with CodeSandbox
+
+React学習用
+3がある数字と3の倍数の時にアホになるシステム
